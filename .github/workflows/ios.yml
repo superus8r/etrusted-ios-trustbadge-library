@@ -13,3 +13,5 @@ jobs:
         run: sudo bundle update
       - name: run unit tests
         run: bundle exec fastlane unit_tests
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
