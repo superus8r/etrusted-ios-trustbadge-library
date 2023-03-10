@@ -24,7 +24,10 @@ jobs:
       - name: Prepare config file for Sonar scanner
         run: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
       - name: Run Sonar Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        run: |
+          brew install sonar-scanner
+          sonar-scanner
+        #uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
